@@ -1,2 +1,30 @@
 # vscode-font-patcher
-Patch your VSCode CSS to apply a custom font to the editor UI (like JetBrainsMono Nerd Font). Works on Windows.
+
+🖋️ A CLI tool written in Rust for patching Visual Studio Code’s `workbench.desktop.main.css` to apply custom UI fonts like Nerd Fonts.
+
+## 🚀 Features
+
+* Locate and patch the `font-family` in VSCode's UI CSS
+* Apply custom fonts like `JetBrainsMono Nerd Font Mono`
+* Detects if font is already set
+* Works directly with `workbench.desktop.main.css`
+
+## ⚙️ Usage
+
+```bash
+cargo run --release -- \
+    --font "JetBrainsMono Nerd Font Mono" \
+    --workbench-css-path "C:\\path\\to\\VSCode\\resources\\app\\out\\vs\\workbench\\workbench.desktop.main.css"
+```
+
+## 🛠️ Build
+
+```bash
+cargo build --release
+```
+
+## 💡 Notes
+
+* Works on Windows (targets `.monaco-workbench.windows`)
+* Restart VSCode after patching to see changes
+* Backup original CSS if you want to revert manually
