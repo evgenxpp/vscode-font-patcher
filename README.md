@@ -9,6 +9,9 @@
 * Detects if font is already set
 * Works directly with `workbench.desktop.main.css`
 
+![image](https://github.com/user-attachments/assets/e3407465-4c41-4d9b-9e29-c3ec7ccfecde)
+
+
 ## ⚙️ Usage
 
 ```bash
