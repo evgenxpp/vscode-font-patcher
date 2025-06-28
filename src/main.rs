@@ -39,12 +39,13 @@ fn main() -> Result<(), Box<dyn Error>> {
                 );
             } else {
                 let mut new_css_content = String::new();
-                let offset_start = styles_match.start() + font_match.start();
-                let offset_end = styles_match.start() + font_match.end();
+                let offset = styles_match.start();
+                let from_position = font_match.start() + offset;
+                let to_position = font_match.end() + offset;
 
-                new_css_content.push_str(&css_content[..offset_start]);
+                new_css_content.push_str(&css_content[..from_position]);
                 new_css_content.push_str(&cli.font);
-                new_css_content.push_str(&css_content[offset_end..]);
+                new_css_content.push_str(&css_content[to_position..]);
 
                 fs::write(workbench_css_path, new_css_content)?;
                 println!("Font updated to '{}'.", cli.font);
@@ -53,7 +54,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             eprintln!("font-family not found inside .monaco-workbench.windows block.");
         }
     } else {
-        eprintln!("Class .monaco-workbench.windows {{...}} not found.");
+        eprintln!("Class .monaco-workbench.windows not found.");
     }
 
     Ok(())
